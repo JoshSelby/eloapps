@@ -123,3 +123,11 @@ dl.rows dt { color: var(--muted); }
 .breakeven .big-num { font-size: 32px; font-weight: 600; color: var(--accent); line-height: 1.1; }
 .breakeven p { align-self: center; color: var(--text); }
 @media (max-width: 760px) { .breakeven { grid-template-columns: 1fr 1fr; } .breakeven p { grid-column: 1 / -1; border-top: 1px solid var(--line); } }
+
+/* Screenshot viewer */
+img.shot { cursor: zoom-in; }
+img.shot:hover, img.shot:focus-visible { border-color: var(--accent); outline: none; }
+dialog.viewer { border: 0; padding: 0; background: none; max-width: 96vw; max-height: 96vh; cursor: zoom-out; }
+dialog.viewer::backdrop { background: rgba(5, 7, 10, .88); }
+dialog.viewer img { max-width: 96vw; max-height: calc(96vh - 28px); border: 1px solid var(--line); }
+.viewer-hint { display: block; text-align: center; font: 500 12px var(--mono); color: var(--muted); padding-top: 8px; }

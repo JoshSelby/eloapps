@@ -13,3 +13,23 @@ document.querySelectorAll("[data-store-link]").forEach((a) => {
 });
 
 document.querySelectorAll("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+// Click a screenshot to see it full size. Click again, or press Esc, to close.
+const viewer = document.createElement("dialog");
+viewer.className = "viewer";
+viewer.innerHTML = '<img alt=""><span class="viewer-hint">Click or press Esc to close</span>';
+document.body.append(viewer);
+viewer.addEventListener("click", () => viewer.close());
+
+document.querySelectorAll("img.shot").forEach((img) => {
+  img.tabIndex = 0;
+  img.title = "Click to enlarge";
+  const open = () => {
+    const big = viewer.querySelector("img");
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt;
+    viewer.showModal();
+  };
+  img.addEventListener("click", open);
+  img.addEventListener("keydown", (e) => { if (e.key === "Enter") open(); });
+});
