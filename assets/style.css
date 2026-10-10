@@ -19,7 +19,7 @@
 html { background: var(--bg); }
 body { margin: 0; color: var(--text); font: 16px/1.6 var(--sans); }
 a { color: var(--accent); }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; font-weight: 600; }
 h1 { font-size: clamp(30px, 5vw, 46px); letter-spacing: -0.5px; }
 h2 { font-size: 24px; margin-top: 8px; }
