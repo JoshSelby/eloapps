@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receipt Insights for Costco · See where your Costco money goes</title>
+  <meta name="description" content="A private Chrome extension that turns your Costco receipts into a spending dashboard: totals, gas, price history, coupon-book deals and price adjustments you can still claim.">
+  <link rel="canonical" href="https://joshselby.github.io/eloapps/receipt-insights/">
+  <meta property="og:title" content="Receipt Insights for Costco">
+  <meta property="og:description" content="Turn your Costco receipts into a private spending dashboard.">
+  <meta property="og:image" content="https://joshselby.github.io/eloapps/assets/img/dash-overview.png">
+  <link rel="icon" href="../assets/img/ri-icon.png">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Receipt Insights for Costco",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome, Brave, Edge",
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
+      { "@type": "Offer", "price": "10", "priceCurrency": "USD", "name": "Pro (one-time)" }
+    ],
+    "publisher": { "@type": "Organization", "name": "ELO Apps" }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true"></span>ELO Apps</a>
+      <nav class="nav">
+        <a href="./" aria-current="page">Receipt Insights</a>
+        <a href="../costco-executive-membership-calculator/">Executive calculator</a>
+        <a href="../costco-price-adjustments/">Price adjustments</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Chrome extension · Free, with optional Pro</div>
+      <h1>See where your Costco money goes.</h1>
+      <p class="lede">Receipt Insights reads the receipts already in your Costco account and turns them into a clear, private dashboard. It shows spending, gas, price history, and money you can still get back.</p>
+      <div class="actions">
+        <a class="btn" data-store-link href="#">Add to Chrome, free</a>
+        <a class="btn secondary" href="#how">How it works</a>
+      </div>
+      <p class="muted" style="font-size:14px">Works in Chrome, Brave and Edge with a costco.com (US) account.</p>
+      <img class="shot" src="../assets/img/dash-overview.png" alt="Receipt Insights dashboard showing spending, trips, gas and savings" width="1280" height="800">
+    </section>
+
+    <section class="section">
+      <h2>What it shows you</h2>
+      <div class="grid three" style="margin-top:16px">
+        <div><h3>Spending</h3><p class="muted">Totals, trips, average trip, and a monthly chart split into warehouse, online and gas.</p></div>
+        <div><h3>Money back</h3><p class="muted">This month's coupon book matched against what you buy, plus price adjustments you got, can still claim, or missed.</p></div>
+        <div><h3>Executive membership</h3><p class="muted">Whether the 2% reward beats the $65 upgrade, from your real purchases.</p></div>
+        <div><h3>Price history</h3><p class="muted">What you've paid for every item over time, with sales and adjustments marked.</p></div>
+        <div><h3>Gas</h3><p class="muted">Gallons, price per gallon over time, fuel type, and every station you've used.</p></div>
+        <div><h3>The details</h3><p class="muted">Groceries vs everything else, sales tax, locations, payment methods, food court, and CSV export.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shots">
+        <img class="shot" src="../assets/img/dash-savings.png" alt="Savings tab with this month's coupon book and price adjustments" loading="lazy" width="1280" height="800">
+        <img class="shot" src="../assets/img/dash-items.png" alt="Item list and price history chart" loading="lazy" width="1280" height="800">
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <h2>How it works</h2>
+      <ol class="prose" style="padding-left:22px">
+        <li>Install the extension and sign in at costco.com like you normally do.</li>
+        <li>Click the Receipt Insights button and choose <b>Sync receipts</b>. It reads your warehouse, gas and online receipts from your Costco account.</li>
+        <li>Open your dashboard. Sync again any time to pick up new trips and this month's coupon book.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>Free and Pro</h2>
+      <p class="muted">Pro is a one-time $10 purchase. Pay once, keep it for good. One price adjustment usually covers it.</p>
+      <table class="plans">
+        <thead><tr><th>Feature</th><th>Free</th><th>Pro</th></tr></thead>
+        <tbody>
+          <tr><td>Sync warehouse, gas and online receipts</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Spending overview and monthly chart</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Executive membership calculator</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Item list (last 12 months)</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Coupon-book deals on things you buy</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Recent purchases you can claim a price adjustment on</td><td class="no">Total only</td><td class="yes">Yes</td></tr>
+          <tr><td>Price adjustments you may have missed</td><td class="no">Total only</td><td class="yes">Yes</td></tr>
+          <tr><td>Price history for every item</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Gas tracking</td><td class="no">Totals</td><td class="yes">Yes</td></tr>
+          <tr><td>Groceries vs everything else, sales tax, locations, payment methods</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Every past year, payment filter, CSV export</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        </tbody>
+      </table>
+      <div class="actions"><a class="btn" data-store-link href="#">Add to Chrome, free</a></div>
+    </section>
+
+    <section class="section">
+      <h2>Private by design</h2>
+      <ul class="ticks">
+        <li>Your receipts are stored only in your browser, never on our servers. We don't have any.</li>
+        <li>It uses the costco.com sign-in you already have. It never sees or stores your password.</li>
+        <li>No sign-up, no tracking, no ads. Remove the extension and its data is deleted.</li>
+        <li>Pro purchases are handled by ExtensionPay and Stripe. Your receipts are never shared with them.</li>
+      </ul>
+      <p style="margin-top:14px"><a href="https://joshselby.github.io/receipt-insights-privacy/">Read the privacy policy</a></p>
+    </section>
+
+    <section class="section">
+      <h2>Questions</h2>
+      <details><summary>Is it made by Costco?</summary><p>No. Receipt Insights is an independent product and isn't affiliated with, endorsed by, or sponsored by Costco Wholesale Corporation.</p></details>
+      <details><summary>Which receipts does it include?</summary><p>In-warehouse receipts, gas station receipts and costco.com orders, as far back as Costco keeps them in your account. Food court and pharmacy purchases show up only if your membership card was scanned.</p></details>
+      <details><summary>How does it find price adjustments?</summary><p>It reads Costco's current coupon book and compares it with what you bought in the last 30 days at full price. It also spots times you bought something again on sale within 30 days without getting an adjustment.</p></details>
+      <details><summary>What does the charge look like?</summary><p>Pro is a one-time $10 charge through Stripe. It appears as "ELO APPS" on your card statement.</p></details>
+      <details><summary>Does it work on my phone?</summary><p>Not yet. It's a desktop browser extension for Chrome, Brave and Edge.</p></details>
+      <details><summary>Need help?</summary><p><a href="https://github.com/JoshSelby/receipt-insights-privacy/issues">Open an issue on GitHub</a> and we'll get back to you.</p></details>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>© <span data-year></span> ELO Apps · <a href="https://joshselby.github.io/receipt-insights-privacy/">Privacy</a></span>
+      <span>Not affiliated with Costco Wholesale Corporation.</span>
+    </div>
+  </footer>
+  <script src="../assets/site.js"></script>
+</body>
+</html>

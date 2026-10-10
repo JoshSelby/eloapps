@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://joshselby.github.io/eloapps/sitemap.xml

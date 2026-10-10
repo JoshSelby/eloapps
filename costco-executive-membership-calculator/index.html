@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is Costco Executive Membership Worth It? (Calculator)</title>
+  <meta name="description" content="Free calculator: enter what you spend at Costco and see whether the Executive membership's 2% reward pays for the $65 upgrade, and your break-even point.">
+  <link rel="canonical" href="https://joshselby.github.io/eloapps/costco-executive-membership-calculator/">
+  <meta property="og:title" content="Is Costco Executive membership worth it? Calculator">
+  <meta property="og:description" content="See if the 2% reward beats the $65 upgrade, from what you actually spend.">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How much do I need to spend for Costco Executive membership to be worth it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Executive upgrade costs $65 more per year than Gold Star ($130 vs $65). At 2% back, you break even at $3,250 a year of qualifying purchases, about $271 a month." } },
+      { "@type": "Question", "name": "What doesn't count toward the 2% Executive reward?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Gas, food court purchases, sales tax, fees and deposits, tobacco, alcohol in many states, and some services such as eye exams and tire installation don't earn the 2% reward." } },
+      { "@type": "Question", "name": "Is there a limit on the Executive reward?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The 2% reward is capped at $1,250 a year." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true"></span>ELO Apps</a>
+      <nav class="nav">
+        <a href="../receipt-insights/">Receipt Insights</a>
+        <a href="./" aria-current="page">Executive calculator</a>
+        <a href="../costco-price-adjustments/">Price adjustments</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" style="padding-bottom:24px">
+      <div class="eyebrow">Free calculator</div>
+      <h1>Is Costco Executive membership worth it?</h1>
+      <p class="lede">Executive costs $130 a year instead of $65, and pays 2% back on qualifying purchases. Enter what you spend to see if it pays for itself.</p>
+    </section>
+
+    <div class="breakeven">
+      <div><span class="mono big-num">$3,250</span><span class="muted">a year in qualifying purchases</span></div>
+      <div><span class="mono big-num">$271</span><span class="muted">a month</span></div>
+      <p>That's the break-even point. Spend more than this on qualifying purchases and Executive pays for itself. Spend less and Gold Star is the better deal.</p>
+    </div>
+
+    <div class="calc">
+      <div>
+        <div class="field">
+          <label for="spend">How much do you spend at Costco?</label>
+          <input id="spend" type="number" inputmode="decimal" min="0" step="10" value="300">
+          <div class="seg" role="tablist" aria-label="Per">
+            <button type="button" data-per="month" class="on">per month</button>
+            <button type="button" data-per="year">per year</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="gas">Of that, how much is gas or food court? (doesn't earn 2%)</label>
+          <input id="gas" type="number" inputmode="decimal" min="0" step="10" value="0">
+        </div>
+        <p class="muted" style="font-size:14px">Include warehouse, Costco.com and Costco Travel. Leave out sales tax if you can.</p>
+      </div>
+      <div aria-live="polite">
+        <span id="verdict" class="verdict yes"></span>
+        <div class="big" id="net"></div>
+        <div class="muted" id="netLabel"></div>
+        <dl class="rows">
+          <div><dt>Qualifying purchases a year</dt><dd id="eligible"></dd></div>
+          <div><dt>2% reward</dt><dd id="reward"></dd></div>
+          <div><dt>Upgrade cost ($130 − $65)</dt><dd>$65.00</dd></div>
+          <div><dt>Break-even point</dt><dd>$3,250/yr · $271/mo</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="note">Want your real number instead of a guess? <a href="../receipt-insights/">Receipt Insights</a> works it out from every receipt in your Costco account, with gas, food court and tax already excluded.</div>
+
+    <section class="section prose">
+      <h2>How the math works</h2>
+      <p>The Gold Star membership is $65 a year and Executive is $130, so the upgrade costs <b>$65</b>. Executive pays a <b>2% reward</b> on qualifying purchases, up to <b>$1,250 a year</b>.</p>
+      <p>$65 ÷ 2% = <b>$3,250</b>. If you spend more than about <b>$3,250 a year ($271 a month)</b> on things that qualify, the reward more than covers the upgrade. Below that, you'd be paying for a reward you don't earn back.</p>
+
+      <h2>What doesn't count</h2>
+      <p>Costco's member terms exclude these from the 2% reward:</p>
+      <ul>
+        <li><b>Gas</b> at Costco gas stations (the Costco Anywhere Visa's 5% on gas is a separate card reward)</li>
+        <li><b>Food court</b> purchases</li>
+        <li>Sales tax, fees and deposits</li>
+        <li>Tobacco, and alcohol in many states</li>
+        <li>Some services such as eye exams, tire installation and car purchases</li>
+      </ul>
+
+      <h2>Other things to weigh</h2>
+      <ul>
+        <li>Executive members also get extra benefits on some Costco services, which can be worth more than the 2% if you use them.</li>
+        <li>The reward arrives once a year as a certificate you spend at Costco.</li>
+        <li>You can usually downgrade back to Gold Star if it doesn't pay off.</li>
+      </ul>
+      <p class="muted" style="font-size:14px">Membership prices are as of 2026 and can change. Check costco.com for current terms. This page is not affiliated with Costco Wholesale Corporation.</p>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>© <span data-year></span> ELO Apps</span>
+      <span>Not affiliated with Costco Wholesale Corporation.</span>
+    </div>
+  </footer>
+  <script src="../assets/site.js"></script>
+  <script src="calc.js"></script>
+</body>
+</html>
