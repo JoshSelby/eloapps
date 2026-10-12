@@ -1,6 +1,6 @@
-// Chrome Web Store link for Receipt Insights. Leave empty until the listing is
+﻿// Chrome Web Store link for Receipt Insights. Leave empty until the listing is
 // approved; buttons then say it's in review instead of linking anywhere.
-const STORE_URL = "";
+const STORE_URL = "https://chromewebstore.google.com/detail/mjdbkpdljblpinnincknloiacdmjhejg";
 
 document.querySelectorAll("[data-store-link]").forEach((a) => {
   if (STORE_URL) {
