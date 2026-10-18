@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sorry to see you go · Receipt Insights</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../../assets/img/ri-icon.png">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <style>
+    .reasons { display: grid; gap: 10px; margin: 20px 0; max-width: 480px; }
+    .reasons button { text-align: left; font: 500 15px var(--sans); color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px; cursor: pointer; }
+    .reasons button:hover { border-color: #33405a; }
+    .reasons button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+    textarea { width: 100%; max-width: 480px; min-height: 90px; font: 15px var(--sans); color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 2px; padding: 10px 12px; }
+    textarea:focus { outline: 1px solid var(--accent); }
+    .actions { margin-top: 14px; }
+    .btn:disabled { opacity: .6; cursor: default; }
+  </style>
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span>ELO Apps</a>
+      <nav class="nav"><a href="../">Receipt Insights</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="ask">
+      <h1>Sorry to see you go. One quick question?</h1>
+      <p class="lede">Why did you remove Receipt Insights? Pick the closest answer. It takes five seconds and helps me fix what's broken.</p>
+      <div class="reasons" id="reasons" role="group" aria-label="Reason for uninstalling"></div>
+      <label class="muted" for="details">Anything else? (optional)</label>
+      <textarea id="details" maxlength="500"></textarea>
+      <div class="actions"><button class="btn" id="send" disabled>Send</button></div>
+    </section>
+    <section class="hero" id="thanks" hidden>
+      <h1>Thanks. This genuinely helps.</h1>
+      <p class="lede">You can close this tab.</p>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>© <span data-year></span> ELO Apps · <a href="https://joshselby.github.io/receipt-insights-privacy/">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Anonymous usage stats go to a Google Form (five short-answer questions).
+    // Empty EVENTS_FORM_ACTION switches this page's sending off.
+    const EVENTS_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSctA-LKcvYBuDL1VrkqKKxWWfBFWhZEFuCRx_jit4sqW2yfsQ/formResponse";
+    const ENTRY_ID = "entry.1106872390";
+    const ENTRY_EVENT = "entry.2038236535";
+    const ENTRY_DETAIL = "entry.1607723088";
+    const ENTRY_VERSION = "entry.1428250506";
+    const ENTRY_DAYS = "entry.1316306938";
+    const FALLBACK_EMAIL = "anorth3164@protonmail.com";
+
+    const REASONS = [
+      "Couldn't get my receipts to sync",
+      "Not in the US",
+      "Didn't find anything useful",
+      "Too expensive",
+      "Privacy worries",
+      "Just trying it out",
+    ];
+
+    const q = new URLSearchParams(location.search);
+    const clip = (s, n) => String(s || "").replace(/[\r\n]+/g, " ").slice(0, n);
+    const num = (s) => (/^\d{1,6}$/.test(s || "") ? s : "0");
+    const id = /^[0-9a-f-]{36}$/i.test(q.get("id") || "") ? q.get("id") : "";
+    const version = clip(q.get("v"), 20);
+    const days = num(q.get("d"));
+    const receipts = num(q.get("s"));
+
+    function sendEvent(event, detail) {
+      if (!EVENTS_FORM_ACTION) return false;
+      const body = new URLSearchParams();
+      body.set(ENTRY_ID, id);
+      body.set(ENTRY_EVENT, event);
+      body.set(ENTRY_DETAIL, clip(detail, 600));
+      body.set(ENTRY_VERSION, version);
+      body.set(ENTRY_DAYS, days);
+      fetch(EVENTS_FORM_ACTION, { method: "POST", mode: "no-cors", body }).catch(() => {});
+      return true;
+    }
+
+    // Once on load, with no action from the visitor. Skipped when the extension
+    // had usage stats switched off (it then leaves the id out of the link).
+    // A reload of the same tab doesn't count twice.
+    let seen = false;
+    try { seen = sessionStorage.getItem("ri-uninstall") === id; sessionStorage.setItem("ri-uninstall", id); } catch {}
+    if (id && !seen) sendEvent("uninstalled", "receipts=" + receipts);
+
+    let reason = "";
+    const box = document.getElementById("reasons");
+    const send = document.getElementById("send");
+    for (const label of REASONS) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = label;
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", () => {
+        reason = label;
+        box.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        send.disabled = false;
+      });
+      box.append(b);
+    }
+
+    send.addEventListener("click", () => {
+      const details = document.getElementById("details").value.trim();
+      const detail = reason + (details ? " | " + details : "");
+      if (!sendEvent("uninstall_reason", detail)) {
+        // No form configured: let the visitor send the answer by email instead.
+        location.href = "mailto:" + FALLBACK_EMAIL + "?subject=" + encodeURIComponent("Receipt Insights feedback") +
+          "&body=" + encodeURIComponent("Why I removed it: " + reason + (details ? "\n\n" + details : "") + "\n\n(version " + version + ")");
+      }
+      document.getElementById("ask").hidden = true;
+      document.getElementById("thanks").hidden = false;
+    });
+  </script>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>
